@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohit Kushwaha - Game Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif'],
+                        'title': ['"Rajdhani"', 'sans-serif']
+                    },
+                    colors: {
+                        dark: '#0f0f10',
+                        darker: '#0a0a0b',
+                        accent: '#bb86fc',
+                        accent2: '#03dac6'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background-color: #0000ff;
+        }
+
+        .glow {
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+        }
+
+        .skill-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .project-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, rgba(187, 134, 252, 0.05) 0%, rgba(3, 218, 198, 0.05) 100%);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-link {
+            position: relative;
+            padding-bottom: 2px;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #bb86fc;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="text-gray-200 font-sans bg-dark">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-darker/80 backdrop-blur-md z-50 border-b border-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-accent text-xl font-title font-bold">ROHIT KUSHWAHA</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="#home" class="nav-link px-3 py-2">Home</a>
+                        <a href="#about" class="nav-link px-3 py-2">About</a>
+                        <a href="#skills" class="nav-link px-3 py-2">Skills</a>
+                        <a href="#projects" class="nav-link px-3 py-2">Projects</a>
+                        <a href="#contact" class="nav-link px-3 py-2">Contact</a>
+                    </div>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-darker">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 rounded-md hover:bg-gray-800">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md hover:bg-gray-800">About</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md hover:bg-gray-800">Skills</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md hover:bg-gray-800">Projects</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md hover:bg-gray-800">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center relative overflow-hidden pt-16">
+        <div class="absolute inset-0 bg-gradient-to-b from-darker/50 to-dark/50 z-0"></div>
+        <div class="absolute inset-0 -z-20">
+            <img src="BackgroundImg.png"
+                alt="Dark fantasy game environment showing eerie castle ruins with glowing blue lights in the distance"
+                class="w-full h-full object-cover">
+        </div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-title font-bold mb-4">
+                    <span class="block text-accent glow">Rohit Kushwaha</span>
+                    <span class="block text-3xl sm:text-4xl lg:text-5xl text-gray-300">Game Developer</span>
+                </h1>
+                <p class="text-lg sm:text-xl md:text-2xl mb-8">
+                    I build immersive gameplay experiences using Unity, Unreal Engine, C++, C#, and Blueprints.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#projects"
+                        class="bg-accent hover:bg-accent/90 text-dark font-bold py-3 px-6 rounded-md transition-all duration-300 transform hover:scale-105">
+                        View Projects
+                    </a>
+                    <a href="#contact"
+                        class="border border-accent text-accent hover:bg-accent/10 font-bold py-3 px-6 rounded-md transition-all duration-300 transform hover:scale-105">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-darker">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-title font-bold mb-4 text-accent">About Me</h2>
+                <div class="w-20 h-1 bg-accent mx-auto"></div>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="flex justify-center">
+                        <div
+                            class="relative w-64 h-64 md:w-80 md:h-80 overflow-hidden rounded-full border-4 border-accent/50">
+                            <img src="Rohit.jpg"
+                                alt="Portrait of Rohit Kushwaha looking professional yet approachable with a slight smile"
+                                class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Who Am I?</h3>
+                        <p class="text-gray-300 mb-4">
+                            I'm a passionate beginner game developer exploring Unity and Unreal Engine. I love working
+                            on horror and narrative-based games, building systems with C++, C#, and Blueprints.
+                        </p>
+                        <p class="text-gray-300">
+                            My goal is to create interactive stories that players feel and remember. I'm particularly
+                            fascinated by environmental storytelling and how subtle details can make game worlds feel
+                            alive and immersive.
+                        </p>
+                        <div class="mt-8">
+                            <a href="#"
+                                class="inline-flex items-center bg-accent text-dark font-bold py-2 px-6 rounded-md transition-all duration-300 hover:bg-accent/90">
+                                <i class="fas fa-download mr-2"></i> Download Resume
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-dark">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-title font-bold mb-4 text-accent2">Skills & Expertise
+                </h2>
+                <div class="w-20 h-1 bg-accent2 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Skill Card 1 -->
+                <div class="skill-card bg-darker rounded-lg p-6 border border-gray-800 hover:border-accent2/50">
+                    <div class="text-accent2 mb-4 text-4xl">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Game Engines</h3>
+                    <p class="text-gray-300">
+                        Unity, Unreal Engine 5 with practical experience in editor tools, physics, and rendering
+                        systems.
+                    </p>
+                </div>
+                <!-- Skill Card 2 -->
+                <div class="skill-card bg-darker rounded-lg p-6 border border-gray-800 hover:border-accent/50">
+                    <div class="text-accent mb-4 text-4xl">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Programming</h3>
+                    <p class="text-gray-300">
+                        C++, C#, Blueprint scripting with focus on gameplay mechanics, AI behavior, and system
+                        architecture.
+                    </p>
+                </div>
+                <!-- Skill Card 3 -->
+                <div class="skill-card bg-darker rounded-lg p-6 border border-gray-800 hover:border-accent2/50">
+                    <div class="text-accent2 mb-4 text-4xl">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Game Systems</h3>
+                    <p class="text-gray-300">
+                        AI Systems, Gameplay Mechanics, Puzzle Design with an emphasis on player experience and
+                        immersion.
+                    </p>
+                </div>
+                <!-- Skill Card 4 -->
+                <div class="skill-card bg-darker rounded-lg p-6 border border-gray-800 hover:border-accent/50">
+                    <div class="text-accent mb-4 text-4xl">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Storytelling</h3>
+                    <p class="text-gray-300">
+                        Level Interaction & Environmental Storytelling to create compelling narratives through game
+                        worlds.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 pb-20 bg-darker">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-title font-bold mb-4 text-accent">My Projects</h2>
+                <div class="w-20 h-1 bg-accent mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card rounded-lg overflow-hidden border border-gray-800">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="Remnants.png"
+                            alt="Screenshot from horror game showing dark corridor with flickering lights and mysterious shadow at the end"
+                            class="w-full h-full object-cover hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex items-end p-6">
+                            <h3 class="text-2xl font-bold text-accent">Remnants</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">
+                            A first-person Psychological horror experience about exploring the depths of the human mind.
+                        </p>
+                        <div class="mb-4">
+                            <span
+                                class="inline-block bg-accent/20 text-accent text-sm px-3 py-1 rounded-full mr-2">Unreal Engine</span>
+                            <span
+                                class="inline-block bg-accent/20 text-accent text-sm px-3 py-1 rounded-full mr-2">Blueprint</span>
+                           
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-400">Role: Developer</span>
+                            <a href="#" class="text-accent hover:text-accent/80 text-sm font-medium">View Details →</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+
+
+    </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-darker">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-title font-bold mb-4 text-accent">Get In Touch</h2>
+                <div class="w-20 h-1 bg-accent mx-auto"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Have a project in mind or want to collaborate? Feel free to reach out!
+                </p>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-dark rounded-lg p-8 border border-gray-800">
+                        <h3 class="text-xl font-bold mb-6">Contact Info</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-accent text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Email</h4>
+                                    <p class="text-gray-400">RohitGamemaker@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mr-4">
+                                    <i class="fab fa-github text-accent text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">GitHub</h4>
+                                    <p class="text-gray-400">github.com/Rohit-Gamedev
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mr-4">
+                                    <i class="fab fa-linkedin-in text-accent text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">LinkedIn</h4>
+                                    <p class="text-gray-400">linkedin.com/in/rohit-kumar-67ab01319</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mr-4">
+                                    <i class="fas fa-gamepad text-accent text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Itch.io</h4>
+                                    <p class="text-gray-400">rohit-gamedev.itch.io</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-dark rounded-lg p-8 border border-gray-800">
+                        <h3 class="text-xl font-bold mb-6">Send a Message</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-300 mb-2">Name</label>
+                                <input type="text" id="name"
+                                    class="w-full bg-darker border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-300 mb-2">Email</label>
+                                <input type="email" id="email"
+                                    class="w-full bg-darker border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent">
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="block text-gray-300 mb-2">Message</label>
+                                <textarea id="message" rows="4"
+                                    class="w-full bg-darker border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent"></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-accent hover:bg-accent/90 text-dark font-bold py-3 px-6 rounded-md transition-colors duration-300">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark py-8 border-t border-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <span class="text-accent text-xl font-title font-bold">ROHIT KUSHWAHA</span>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://github.com/Rohit-Gamedev"
+                        class="text-gray-400 hover:text-accent transition-colors duration-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rohit-kumar-67ab01319"
+                        class="text-gray-400 hover:text-accent transition-colors duration-300">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="https://rohit-gamedev.itch.io"
+                        class="text-gray-400 hover:text-accent transition-colors duration-300">
+                        <i class="fab fa-itch-io text-xl"></i>
+                    </a>
+                    <a href="https://twitter.com/RohitGamedev"
+                        class="text-gray-400 hover:text-accent transition-colors duration-300">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-6 text-center text-gray-500 text-sm">
+                © 2025 Rohit Kushwaha. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                mobileMenu.classList.add('hidden');
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission handler
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you soon.');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+
+</html>
