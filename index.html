@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rohit Kushwaha - Game Developer</title>
@@ -12,14 +15,14 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Poppins', 'sans-serif'],
-                        'title': ['"Rajdhani"', 'sans-serif']
+                        'sans': ['Space Grotesk', 'sans-serif'],
+                        'title': ['Space Grotesk', 'sans-serif']
                     },
                     colors: {
                         dark: '#0f0f10',
                         darker: '#0a0a0b',
-                        accent: '#bb86fc',
-                        accent2: '#03dac6'
+                        accent: '#799EFF',
+                        accent2: '#BEFFF7'
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
@@ -43,7 +46,7 @@
         }
 
         .glow {
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            text-shadow: 0 0 7px rgb(54, 95, 198);
         }
 
         .skill-card {
@@ -77,7 +80,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: #bb86fc;
+            background-color: #ffffff;
             transition: width 0.3s ease;
         }
 
@@ -102,6 +105,8 @@
                         <a href="#skills" class="nav-link px-3 py-2">Skills</a>
                         <a href="#projects" class="nav-link px-3 py-2">Projects</a>
                         <a href="#contact" class="nav-link px-3 py-2">Contact</a>
+                           <a href="#discord" class="nav-link px-3 py-2">Discord</a>
+                        <a href="#youtube" class="nav-link px-3 py-2">YouTube</a>
                     </div>
                 </div>
                 <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
@@ -117,6 +122,8 @@
                 <a href="#skills" class="block px-3 py-2 rounded-md hover:bg-gray-800">Skills</a>
                 <a href="#projects" class="block px-3 py-2 rounded-md hover:bg-gray-800">Projects</a>
                 <a href="#contact" class="block px-3 py-2 rounded-md hover:bg-gray-800">Contact</a>
+                <a href="#discord" class="block px-3 py-2 rounded-md hover:bg-gray-800">Discord</a>
+                <a href="#youtube" class="block px-3 py-2 rounded-md hover:bg-gray-800">YouTube</a>
             </div>
         </div>
     </nav>
@@ -125,7 +132,7 @@
     <section id="home" class="min-h-screen flex items-center relative overflow-hidden pt-16">
         <div class="absolute inset-0 bg-gradient-to-b from-darker/50 to-dark/50 z-0"></div>
         <div class="absolute inset-0 -z-20">
-            <img src="Bg.jpeg"
+            <img src="BackgroundImg.png"
                 alt="Dark fantasy game environment showing eerie castle ruins with glowing blue lights in the distance"
                 class="w-full h-full object-cover">
         </div>
@@ -181,7 +188,7 @@
                             alive and immersive.
                         </p>
                         <div class="mt-8">
-                            <a href="#"
+                            <a href="https://drive.google.com/file/d/1Pr25SLeQEL7vfz3Sib6GRds11cufvW96/view?usp=drive_link"
                                 class="inline-flex items-center bg-accent text-dark font-bold py-2 px-6 rounded-md transition-all duration-300 hover:bg-accent/90">
                                 <i class="fas fa-download mr-2"></i> Download Resume
                             </a>
@@ -252,7 +259,7 @@
     <!-- Projects Section -->
     <section id="projects" class="py-16 bg-darker">
         <div class="container mx-auto px-6 sm:px-6 lg:px-8">
-            
+
             <div class="text-center mb-12">
                 <h2 class="text-3xl sm:text-4xl lg:text-5xl font-title font-bold mb-4 text-accent">My Projects</h2>
                 <div class="w-20 h-1 bg-accent mx-auto"></div>
@@ -263,9 +270,9 @@
                     <!-- Image Gallery -->
                     <div class="grid grid-cols-1 gap-1 p-1 bg-gray-900/50">
                         <div class="relative aspect-video">
-                            <img src="Remnants.png" alt="Gameplay screenshot" class="w-full h-full object-cover"/>
+                            <img src="Remnants.png" alt="Gameplay screenshot" class="w-full h-full object-cover" />
                         </div>
-                        
+
                     </div>
 
                     <!-- Video Section -->
@@ -281,57 +288,67 @@
                     </div>
                     <div class="p-6">
                         <p class="text-gray-300 mb-4">
-                            A first-person Psychological horror experience about investigating supernatural occurrences in an abandoned asylum.
+                            A first-person Psychological horror experience about investigating supernatural occurrences
+                            in an abandoned asylum.
                         </p>
                         <div class="mb-4">
-                            <span class="inline-block bg-accent/20 text-accent text-sm px-3 py-1 rounded-full mr-2">Unreal Engine</span>
-                            <span class="inline-block bg-accent/20 text-accent text-sm px-3 py-1 rounded-full mr-2">Blueprint</span>
-                         
+                            <span
+                                class="inline-block bg-accent/20 text-accent text-sm px-3 py-1 rounded-full mr-2">Unreal
+                                Engine</span>
+                            <span
+                                class="inline-block bg-accent/20 text-accent text-sm px-3 py-1 rounded-full mr-2">Blueprint</span>
+
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-sm text-gray-400">Role: Lead Developer</span>
                             <a href="#" class="text-accent hover:text-accent/80 text-sm font-medium">View Details →</a>
                         </div>
-                        <a href="https://drive.google.com/file/d/1Kh4LQIyXNit_x4dhXOmtJGTtRcJmKdoB/view?usp=drive_link" 
-                              download 
-                              class="mt-4 inline-block bg-accent hover:bg-accent/90 text-dark font-bold py-2 px-4 rounded-md transition-all duration-300">
-                             <i class="fas fa-download mr-2"></i> Download Game
-                         </a>
+                        <a href="https://rohit-gamedev.itch.io/remnants"
+                            download
+                            class="mt-4 inline-block bg-accent hover:bg-accent/90 text-dark font-bold py-2 px-4 rounded-md transition-all duration-300">
+                            <i class="fas fa-download mr-2"></i> Download Game
+                        </a>
 
                     </div>
                 </div>
-        </div>
+            </div>
         </div>
         </div>
     </section>
-
-<!-- Discord Section -->
-<section id="discord" class="py-20 bg-dark">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-title font-bold mb-4 text-accent2">Join My Discord</h2>
-            <div class="w-20 h-1 bg-accent2 mx-auto"></div>
-            <p class="text-gray-400 max-w-xl mx-auto mt-4">
-                Connect with me and other game developers, report bugs, give feedback, or just hang out!
-            </p>
-        </div>
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-darker border border-gray-800 rounded-lg p-8 flex flex-col md:flex-row items-center gap-8">
-                <img src="https://img.icons8.com/color/144/discord-logo.png" alt="Discord Icon" class="w-24 h-24">
-                <div class="flex-1 text-center md:text-left">
-                    <h3 class="text-2xl font-bold text-accent mb-2">VoidDev</h3>
-                    <p class="text-gray-300 mb-4">
-                        Join my official Discord server to get early access to new games, report bugs, or talk about game development with the community.
-                    </p>
-                    <a href="https://discord.gg/fa4UD6Wu"
-                        class="inline-block bg-accent hover:bg-accent/90 text-dark font-bold py-3 px-6 rounded-md transition-all duration-300">
-                        <i class="fab fa-discord mr-2"></i> Join Now
-                    </a>
-                </div>
+       <!-- Discord Section -->
+    <section id="discord" class="py-20 bg-grey">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-accent">Join My Discord</h2>
+                <div class="w-20 h-1 bg-accent mx-auto"></div>
+                <p class="text-gray-400 max-w-xl mx-auto mt-4">Connect with me and other game developers, report bugs,
+                    give feedback, or just hang out!</p>
+            </div>
+            <div class="flex justify-center">
+                <a href="https://discord.gg/fa4UD6Wu"
+                    class="inline-block bg-accent hover:bg-accent/90 text-dark font-bold py-3 px-6 rounded-md transition-all duration-300">
+                    <i class="fab fa-discord mr-2"></i> Join Now
+                </a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+ <!-- YouTube Section -->
+    <section id="youtube" class="py-20 bg-grey">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-accent">My YouTube Channel</h2>
+                <div class="w-20 h-1 bg-accent mx-auto"></div>
+                <p class="text-gray-400 max-w-xl mx-auto mt-4">Check out my latest game development videos and tutorials!</p>
+            </div>
+            <div class="flex justify-center">
+                <a href="https://youtube.com/@voidgamedeveloper?si=G2SmUGGob9IB_DY8" class="inline-block bg-accent hover:bg-accent/90 text-dark font-bold py-3 px-6 rounded-md transition-all duration-300">
+                    <i class="fab fa-youtube mr-2"></i> Visit Channel
+                </a>
+            </div>
+        </div>
+    </section>
+
 
 
     </div>
