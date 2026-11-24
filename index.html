@@ -23,8 +23,9 @@
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23070708'/%3E%3Crect x='9' y='9' width='14' height='14' fill='%23d8312d'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600&family=Chakra+Petch:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap"
     rel="stylesheet">
   <style>
     :root {
@@ -1261,6 +1262,102 @@
       }
     </style>
   </noscript>
+<style>
+  :root {
+    --display: 'Big Shoulders Display', 'Barlow Condensed', sans-serif;
+    --body: 'Instrument Sans', system-ui, sans-serif;
+    --mono: 'Chakra Petch', 'Courier New', monospace
+  }
+  .menu-title, .view h2, .boot-title { line-height: .88 }
+  .hud-brand, .hud-status, .rail-footer, .data-row span, .home-telemetry span, .system-list small,
+  .more-coming span, .bottom-hud, .copyright, .contact-note { letter-spacing: .03em }
+  .menu-layout { padding-bottom: 135px }
+
+  /* ===== Projects (data driven) ===== */
+  .pj-filters { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 23px }
+  .pj-filters[hidden] { display: none }
+  .pj-filter { background: none; border: 1px solid rgba(238,233,223,.28); color: var(--ash); cursor: pointer; font: 10px var(--mono); letter-spacing: .08em; padding: 7px 11px; text-transform: uppercase; transition: color .18s, border-color .18s, background .18s }
+  .pj-filter:hover { border-color: var(--scarlet); color: var(--bone) }
+  .pj-filter.on { background: var(--scarlet); border-color: var(--scarlet); color: #fff }
+  .pj-media { aspect-ratio: 16/9; background: #000; border: 1px solid rgba(238,233,223,.32); margin-top: 16px; overflow: hidden; position: relative }
+  .pj-media img { display: block; height: 100%; object-fit: cover; width: 100% }
+  .pj-media iframe { border: 0; height: 100%; inset: 0; position: absolute; width: 100% }
+  .pj-poster { align-items: center; background: #0a0a0b center/cover no-repeat; border: 0; color: var(--bone); cursor: pointer; display: flex; flex-direction: column; gap: 12px; height: 100%; inset: 0; justify-content: center; padding: 0; position: absolute; width: 100% }
+  .pj-poster:after { background: linear-gradient(0deg, rgba(7,7,8,.85), rgba(7,7,8,.12) 60%); content: ""; inset: 0; position: absolute }
+  .pj-poster i { align-items: center; background: rgba(216,49,45,.88); border: 1px solid var(--scarlet); box-shadow: 0 0 26px rgba(216,49,45,.45); display: flex; height: 62px; justify-content: center; position: relative; transition: background .18s, color .18s, transform .18s; width: 62px; z-index: 1 }
+  .pj-poster i:before { content: "▶"; font-size: 20px; font-style: normal; padding-left: 3px }
+  .pj-poster span { font: 500 11px var(--mono); letter-spacing: .14em; position: relative; z-index: 1 }
+  .pj-poster:hover i { background: var(--bone); color: var(--black); transform: scale(1.08) }
+  .pj-empty { align-items: center; background: repeating-linear-gradient(0deg, rgba(238,233,223,.04) 0 1px, transparent 1px 4px), #0a0a0b; display: flex; flex-direction: column; gap: 8px; inset: 0; justify-content: center; padding: 16px; position: absolute; text-align: center }
+  .pj-empty span { color: var(--ember); font: 10px var(--mono); letter-spacing: .12em }
+  .pj-empty b { font: 600 clamp(20px, 3vw, 30px)/1 var(--display); text-transform: uppercase }
+
+  .pj-detail { margin-top: 18px }
+  .pj-head { align-items: center; display: flex; flex-wrap: wrap; gap: 8px 14px }
+  .pj-head h3 { font: 600 clamp(30px, 3.4vw, 42px)/.95 var(--display); letter-spacing: .015em; margin: 0; text-transform: uppercase }
+  .pj-badge { border: 1px solid var(--ember); color: var(--ember); font: 9px var(--mono); letter-spacing: .08em; padding: 4px 7px; text-transform: uppercase }
+  .pj-badge.s-released { background: var(--scarlet); border-color: var(--scarlet); color: #fff }
+  .pj-tag { color: var(--ash); display: block; font: 10px var(--mono); letter-spacing: .04em; margin-top: 8px; text-transform: uppercase }
+  .pj-desc { color: var(--chalk-dim); font-size: 15px; line-height: 1.65; margin: 14px 0 0; max-width: 540px }
+  .pj-block { border-top: 1px solid rgba(238,233,223,.24); margin-top: 18px; padding-top: 12px }
+  .pj-label { color: var(--ember); display: block; font: 500 10px var(--mono); letter-spacing: .09em; margin-bottom: 8px }
+  .pj-block ul { list-style: none; margin: 0; padding: 0 }
+  .pj-block li { color: var(--chalk-dim); font-size: 14px; line-height: 1.55; padding: 5px 0 5px 22px; position: relative }
+  .pj-block li:before { color: var(--scarlet); content: "//"; font: 10px var(--mono); left: 0; position: absolute; top: 9px }
+  .pj-detail .loadout { margin-top: 16px }
+  .pj-links { display: flex; flex-wrap: wrap; gap: 10px 18px }
+  .pj-links .action { margin-top: 18px }
+  .pj-link { align-self: flex-end; border-bottom: 1px solid var(--scarlet); color: var(--ember); font-size: 12px; font-weight: 600; padding-bottom: 3px; text-decoration: none }
+
+  .pj-list { display: grid; gap: 7px; margin-top: 26px }
+  .pj-list-label { color: var(--ash); font: 10px var(--mono); letter-spacing: .09em; margin-bottom: 2px }
+  .pj-item { align-items: center; background: rgba(16,16,18,.78); border: 1px solid rgba(238,233,223,.26); border-left: 2px solid var(--blood); color: var(--bone); cursor: pointer; display: flex; font: inherit; gap: 12px; padding: 8px 12px 8px 8px; text-align: left; transition: border-color .18s, background .18s; width: 100% }
+  .pj-item:hover, .pj-item.on { background: rgba(133,23,25,.22); border-color: var(--scarlet) }
+  .pj-thumb { aspect-ratio: 16/9; background: #0a0a0b center/cover no-repeat; flex: none; width: 86px }
+  .pj-meta { flex: 1; min-width: 0 }
+  .pj-meta b { display: block; font: 600 19px/1.05 var(--display); letter-spacing: .02em; text-transform: uppercase }
+  .pj-meta small { color: var(--ash); display: block; font: 10px var(--mono); letter-spacing: .03em; margin-top: 4px; text-transform: uppercase }
+  .pj-item em { color: var(--ember); font: normal 10px var(--mono); letter-spacing: .06em; text-transform: uppercase }
+  .pj-item:focus-visible, .pj-poster:focus-visible, .pj-filter:focus-visible, .pj-link:focus-visible { outline: 1px solid var(--scarlet); outline-offset: 4px }
+</style>
+<style>
+  /* ===== What-I-learned rows ===== */
+  .pj-block .pj-learn { background: rgba(16,16,18,.78); border: 1px solid rgba(238,233,223,.26); padding: 4px 14px }
+  .pj-block .pj-learn li { align-items: center; color: var(--bone); display: flex; font-size: 14px; font-weight: 500; gap: 12px; padding: 10px 0 }
+  .pj-block .pj-learn li + li { border-top: 1px solid rgba(238,233,223,.1) }
+  .pj-block .pj-learn li:before { content: none }
+  .pj-learn svg { fill: none; flex: none; height: 18px; stroke: var(--scarlet); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; width: 18px }
+
+  /* ===== Performance / smooth scrolling ===== */
+  html { -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; overflow-x: hidden; text-size-adjust: 100% }
+  body { overflow: visible !important }            /* one scroller only (html), not html + body */
+  .menu-world { overflow-x: clip }
+  button, a, [role="tab"] { touch-action: manipulation }
+  .smoke { filter: none; will-change: transform }  /* gradient is already soft; blur() on a huge animated layer is what made scrolling choppy */
+  .scene, .embers { transform: translateZ(0) }
+
+  @media (hover: none) { .bottom-hud { display: none } }
+
+  @media (max-width: 760px) {
+    .smoke, .world-grid { display: none }
+    .scene { animation: none; scale: 1; will-change: auto }
+    .scene:after { background: radial-gradient(ellipse at 74% 47%, transparent 0%, rgba(0,0,0,.7) 75%) }
+    .menu-layout { padding-bottom: 48px }
+    .bottom-hud { display: none }
+    .content-stage { scroll-margin-top: 8px }
+    .hud-brand { font-size: 10px }
+    .view h2 { font-size: clamp(44px, 13vw, 56px) }
+    .home-telemetry b { font-size: 11px }
+    .home-telemetry span { font-size: 8px; letter-spacing: .02em }
+    .pj-thumb { width: 72px }
+    .pj-meta b { font-size: 17px }
+    .pj-item { gap: 10px }
+    .pj-item em { display: none }
+    .pj-poster i { height: 52px; width: 52px }
+    .contact-list a { overflow-wrap: anywhere }
+    .more-coming b { font-size: 15px }
+  }
+</style>
 </head>
 
 <body class="booting">
@@ -1304,17 +1401,13 @@
             class="action" href="#projects" data-open="projects">ENTER PORTFOLIO</a>
         </article>
         <article class="view" role="tabpanel" id="projects" aria-labelledby="tab-projects">
-          <p class="view-kicker">SELECTED PROJECT / 001</p>
+          <p class="view-kicker" id="pj-kicker">SELECTED PROJECTS</p>
           <h2>PLAY THE<br><em>WORK.</em></h2>
-          <p class="view-text">A released game should be playable before it is explained. Start with Remnants, then see
-            the role, tools and systems behind it.</p>
-          <div class="project-card"><img src="https://gamesbyvoid.github.io/Portfolio/Remnants.png"
-              alt="Remnants game artwork">
-            <div class="project-card-body">
-              <div><strong>Remnants</strong><small>UNREAL ENGINE 5 · LEAD DEVELOPER</small></div><a
-                href="https://rohit-gamedev.itch.io/remnants" target="_blank" rel="noreferrer">PLAY ↗</a>
-            </div>
-          </div>
+          <p class="view-text">A released game should be playable before it is explained. Pick a project to see what it is, what I learned from it, and watch it in action.</p>
+          <div class="pj-filters" id="pj-filters" role="group" aria-label="Filter projects"></div>
+          <div class="pj-media" id="pj-media"></div>
+          <div class="pj-detail" id="pj-detail"></div>
+          <div class="pj-list" id="pj-list"></div>
         </article>
         <article class="view" role="tabpanel" id="profile" aria-labelledby="tab-profile">
           <p class="view-kicker">ABOUT THE DEVELOPER</p>
@@ -1367,7 +1460,6 @@
     document.querySelector('[data-open="projects"]').addEventListener('click', event => { event.preventDefault(); show('projects'); tabs.find(t => t.dataset.view === 'projects').focus(); });
     document.querySelector('.world-grid').insertAdjacentHTML('afterend', '<div class="smoke one"></div><div class="smoke two"></div>');
     document.querySelector('#home .view-text').insertAdjacentHTML('afterend', '<div class="home-telemetry"><div><span>RELEASED</span><b>01 TITLE</b></div><div><span>PRIMARY ENGINE</span><b>UNREAL 5</b></div><div><span>CURRENT STATE</span><b>BUILDING NEXT</b></div></div>');
-    document.querySelector('#projects .project-card').insertAdjacentHTML('afterend', '<div class="project-intel"><div><span>PLAY TIME</span><b>AVAILABLE NOW</b></div><div><span>FORMAT</span><b>PC / ITCH.IO</b></div></div><div class="more-coming"><span>PROJECT SLOT / 002</span><b>More to come</b><span>NEXT BUILD IN DEVELOPMENT</span></div>');
     document.querySelector('#systems .loadout').insertAdjacentHTML('afterend', '<div class="system-list"><div><span>Gameplay mechanics</span><small>ACTIVE</small></div><div><span>AI behaviour &amp; puzzles</span><small>ACTIVE</small></div><div><span>Environmental storytelling</span><small>ACTIVE</small></div></div>');
     document.querySelector('#contact .contact-list').insertAdjacentHTML('afterend', '<p class="contact-note">NO FORM. NO BOT. SEND A DIRECT MESSAGE AND I’LL GET BACK TO YOU.</p>');
   </script>
@@ -1381,8 +1473,8 @@
       const boot = document.getElementById('boot');
       const toggle = document.getElementById('sound-toggle');
       const tabs = [...document.querySelectorAll('[role="tab"]')];
-      const HOVER_SEL = '.menu-list button,.action,.project-card a,.contact-list a,.sound-toggle';
-      const CLICK_SEL = '[role="tab"],.action,.project-card a,.contact-list a,.sound-toggle';
+      const HOVER_SEL = '.menu-list button,.action,.project-card a,.contact-list a,.sound-toggle,.pj-item,.pj-poster,.pj-filter,.pj-link';
+      const CLICK_SEL = '[role="tab"],.action,.project-card a,.contact-list a,.sound-toggle,.pj-item,.pj-poster,.pj-filter,.pj-link';
       const STORE = 'rk-portfolio-muted';
       let booting = true, silent = false;
 
@@ -1462,6 +1554,7 @@
         if (master) master.gain.setTargetAtTime(muted ? 0 : 1, ctx.currentTime, .04);
       });
 
+      window.rkDuck = on => { if (master && ctx) master.gain.setTargetAtTime(on || muted ? 0 : 1, ctx.currentTime, .15); };
       document.addEventListener('visibilitychange', () => {
         if (!ctx) return;
         if (document.hidden) ctx.suspend(); else ctx.resume();
@@ -1515,6 +1608,7 @@
       /* ---------- EMBERS ---------- */
       (function () {
         if (reduce) return;
+        const lite = window.matchMedia('(max-width: 760px), (pointer: coarse)').matches;
         const cv = document.createElement('canvas');
         cv.className = 'embers'; cv.setAttribute('aria-hidden', 'true');
         world.appendChild(cv);
@@ -1541,15 +1635,16 @@
           };
         }
         function size() {
-          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          dpr = lite ? 1 : Math.min(window.devicePixelRatio || 1, 2);
           w = window.innerWidth; h = window.innerHeight;
           cv.width = w * dpr; cv.height = h * dpr;
           c.setTransform(dpr, 0, 0, dpr, 0, 0);
-          const n = Math.round(Math.min(70, Math.max(24, w * h / 22000)));
+          const n = lite ? 12 : Math.round(Math.min(70, Math.max(24, w * h / 22000)));
           while (ps.length < n) ps.push(make(true));
           ps.length = n;
         }
         function frame() {
+          if (window.rkVideo || document.hidden) { c.clearRect(0, 0, w, h); requestAnimationFrame(frame); return; }
           c.clearRect(0, 0, w, h);
           c.globalCompositeOperation = 'lighter';
           for (const p of ps) {
@@ -1565,7 +1660,8 @@
           requestAnimationFrame(frame);
         }
         size();
-        window.addEventListener('resize', size);
+        let rt, lw = window.innerWidth;
+        window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (lite && window.innerWidth === lw) return; lw = window.innerWidth; size(); }, 200); });
         requestAnimationFrame(frame);
       })();
 
@@ -1617,6 +1713,202 @@
       }
     })();
   </script>
+<script>
+  /* =====================================================================
+     PROJECTS  -  edit this list to customise the Projects tab.
+     Copy one { ... } block to add a project. Everything is optional
+     except `title`.
+
+       title        project name
+       status       any label you like: 'RELEASED', 'LEARNING', 'IN DEVELOPMENT'...
+                    (filter buttons are created automatically from these)
+       tag          small line under the title, e.g. 'UNREAL ENGINE 5 · SOLO'
+       image        cover image URL (used as thumbnail / video poster)
+       video        YouTube link (any style: watch?v=, youtu.be, shorts) - plays inside the page
+       description  what the project is
+       learned      list of things you learned from it
+       tools        list of tools / tech used
+       links        buttons, e.g. { label: 'PLAY ON ITCH.IO', url: 'https://...' }
+     ===================================================================== */
+  (function () {
+    var SHOW_NEXT_SLOT = true;   // dashed "More to come" card at the end of the list
+
+    var PROJECTS = [
+      {
+        title: 'Remnants',
+        status: 'RELEASED',
+        tag: 'Unreal Engine 5 · Lead developer',
+        image: 'https://gamesbyvoid.github.io/Portfolio/Remnants.jpg',
+        video: 'https://www.youtube.com/watch?v=s94LNrzSras',
+        description: 'My released game, built in Unreal Engine 5 as lead developer. Playable right now on itch.io.',
+        learned: ['Unreal Engine AI systems', 'How to build environments in Unreal Engine'],
+        tools: ['UNREAL ENGINE 5'],
+        links: [{ label: 'PLAY ON ITCH.IO', url: 'https://rohit-gamedev.itch.io/remnants' }]
+      },
+      {
+        title: 'BattleBlaster',
+        status: 'LEARNING',
+        tag: 'Unreal Engine 5 (C++) · Learning project',
+        image: '',
+        video: 'https://www.youtube.com/watch?v=91yTpCuSkxo',
+        description: 'A tank combat game developed using Unreal Engine 5 and C++.',
+        learned: [
+          'Unreal Engine C++ Programming & OOP',
+          'Actor, Pawn, GameMode and GameInstance',
+          'Component-Based Architecture',
+          'Enhanced Input System',
+          'Projectile, Collision & Damage Systems',
+          'Basic Enemy AI & Targeting',
+          'Health Management System',
+          'UMG Widget Integration',
+          'Niagara VFX & Audio Integration',
+          'Timers, Level Management & Game Flow'
+        ],
+        tools: ['UNREAL ENGINE 5', 'C++', 'ENHANCED INPUT', 'UMG', 'NIAGARA'],
+        links: []
+      }
+    ];
+
+    /* icons for the "what I learned" rows - auto-picked from keywords, or set { t: 'text', i: 'code' } yourself */
+    var ICONS = {
+      code: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+      box: '<path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><polyline points="3 8 12 13 21 8"/><line x1="12" y1="13" x2="12" y2="22"/>',
+      pad: '<rect x="2" y="6" width="20" height="12" rx="4"/><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><circle cx="15" cy="13" r="1"/><circle cx="18" cy="11" r="1"/>',
+      target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="1" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="1" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="23" y2="12"/>',
+      heart: '<path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/>',
+      layout: '<rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>',
+      spark: '<polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/>',
+      layers: '<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>',
+      peak: '<path d="M3 20l6-10 4 6 3-4 5 8z"/>',
+      cpu: '<rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="5"/><line x1="15" y1="1" x2="15" y2="5"/><line x1="9" y1="19" x2="9" y2="23"/><line x1="15" y1="19" x2="15" y2="23"/><line x1="1" y1="9" x2="5" y2="9"/><line x1="1" y1="15" x2="5" y2="15"/><line x1="19" y1="9" x2="23" y2="9"/><line x1="19" y1="15" x2="23" y2="15"/>',
+      dot: '<rect x="8" y="8" width="8" height="8" transform="rotate(45 12 12)"/>'
+    };
+    var RULES = [[/c\+\+|programming|\boop\b/, 'code'], [/component|actor|pawn|gamemode|architecture/, 'box'], [/input/, 'pad'], [/\bai\b|behavio/, 'cpu'], [/projectile|collision|combat|enemy|target/, 'target'], [/health|damage/, 'heart'], [/umg|widget|\bui\b/, 'layout'], [/niagara|vfx|audio|effect/, 'spark'], [/level|flow|timer/, 'layers'], [/environment|landscape|world/, 'peak']];
+    function iconFor(t) { t = t.toLowerCase(); for (var i = 0; i < RULES.length; i++) if (RULES[i][0].test(t)) return RULES[i][1]; return 'dot'; }
+
+    var $ = function (id) { return document.getElementById(id); };
+    var mediaBox = $('pj-media'), detail = $('pj-detail'), list = $('pj-list'), filters = $('pj-filters'), kicker = $('pj-kicker');
+    var cur = 0, filter = 'ALL';
+
+    function yt(u) { var m = String(u || '').match(/(?:youtu\.be\/|v=|\/shorts\/|\/embed\/|\/live\/)([\w-]{11})/); return m ? m[1] : ''; }
+    function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+    function duck(on) { if (window.rkDuck) window.rkDuck(on); }
+    function thumb(p, q) { if (p.image) return p.image; var id = yt(p.video); return id ? 'https://i.ytimg.com/vi/' + id + '/' + (q || 'hqdefault') + '.jpg' : ''; }
+    function slug(s) { return String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-'); }
+    function visible() { var out = []; PROJECTS.forEach(function (p, i) { if (filter === 'ALL' || p.status === filter) out.push(i); }); return out; }
+
+    function renderFilters() {
+      filters.innerHTML = '';
+      var st = ['ALL']; PROJECTS.forEach(function (p) { if (p.status && st.indexOf(p.status) < 0) st.push(p.status); });
+      filters.hidden = st.length < 3;
+      st.forEach(function (s) {
+        var b = el('button', 'pj-filter' + (s === filter ? ' on' : ''), s); b.type = 'button';
+        b.addEventListener('click', function () { filter = s; var v = visible(); if (v.indexOf(cur) < 0) cur = v[0]; renderAll(); });
+        filters.appendChild(b);
+      });
+    }
+
+    function renderMedia(play) {
+      var p = PROJECTS[cur], id = yt(p.video), img = thumb(p);
+      mediaBox.innerHTML = '';
+      if (id && play) {
+        var f = document.createElement('iframe');
+        f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+        f.title = p.title + ' gameplay'; f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen = true;
+        mediaBox.appendChild(f); window.rkVideo = true; duck(true); return;
+      }
+      window.rkVideo = false; duck(false);
+      if (id) {
+        var b = el('button', 'pj-poster'); b.type = 'button'; b.setAttribute('aria-label', 'Play ' + p.title);
+        if (img) b.style.backgroundImage = "url('" + img + "')";
+        b.innerHTML = '<i></i><span>PLAY GAMEPLAY</span>';
+        b.addEventListener('click', function () { renderMedia(true); });
+        mediaBox.appendChild(b);
+      } else if (img) {
+        var i = el('img'); i.loading = 'lazy'; i.decoding = 'async'; i.src = img; i.alt = p.title + ' artwork'; mediaBox.appendChild(i);
+      } else {
+        mediaBox.innerHTML = '<div class="pj-empty"><span>// NO SIGNAL YET</span><b>Gameplay video coming soon</b></div>';
+      }
+    }
+
+    function renderDetail() {
+      var p = PROJECTS[cur]; detail.innerHTML = '';
+      var head = el('div', 'pj-head'); head.appendChild(el('h3', '', p.title));
+      if (p.status) head.appendChild(el('span', 'pj-badge s-' + slug(p.status), p.status));
+      detail.appendChild(head);
+      if (p.tag) detail.appendChild(el('small', 'pj-tag', p.tag));
+      if (p.description) detail.appendChild(el('p', 'pj-desc', p.description));
+      if (p.learned && p.learned.length) {
+        var blk = el('div', 'pj-block'); blk.appendChild(el('span', 'pj-label', '// WHAT I LEARNED'));
+        var ul = el('ul', 'pj-learn');
+        p.learned.forEach(function (it) {
+          var txt = typeof it === 'string' ? it : it.t, ic = typeof it === 'string' ? iconFor(txt) : it.i;
+          var li = el('li'); li.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + (ICONS[ic] || ICONS.dot) + '</svg>';
+          li.appendChild(el('span', '', txt)); ul.appendChild(li);
+        });
+        blk.appendChild(ul); detail.appendChild(blk);
+      }
+      if (p.tools && p.tools.length) {
+        var lo = el('div', 'loadout'); p.tools.forEach(function (t) { lo.appendChild(el('span', '', t)); }); detail.appendChild(lo);
+      }
+      var links = (p.links || []).filter(function (l) { return l && l.url; });
+      if (links.length) {
+        var box = el('div', 'pj-links');
+        links.forEach(function (l, n) {
+          var a = el('a', n === 0 ? 'action' : 'pj-link', l.label || 'OPEN'); a.href = l.url; a.target = '_blank'; a.rel = 'noreferrer';
+          if (n > 0) a.textContent = (l.label || 'OPEN') + ' ↗';
+          box.appendChild(a);
+        });
+        detail.appendChild(box);
+      }
+    }
+
+    function renderList() {
+      list.innerHTML = '';
+      var v = visible();
+      if (v.length > 1 || SHOW_NEXT_SLOT) list.appendChild(el('div', 'pj-list-label', '// ALL PROJECTS'));
+      if (v.length > 1) v.forEach(function (i) {
+        var p = PROJECTS[i], b = el('button', 'pj-item' + (i === cur ? ' on' : '')); b.type = 'button';
+        var t = el('span', 'pj-thumb'), tu = thumb(p, 'mqdefault'); if (tu) t.style.backgroundImage = "url('" + tu + "')";
+        var m = el('span', 'pj-meta'); m.appendChild(el('b', '', p.title)); m.appendChild(el('small', '', p.tag || ''));
+        b.append(t, m, el('em', '', p.status || ''));
+        b.addEventListener('click', function () { cur = i; renderAll(); mediaBox.scrollIntoView({ behavior: 'smooth', block: 'center' }); });
+        list.appendChild(b);
+      });
+      if (SHOW_NEXT_SLOT) {
+        var s = el('div', 'more-coming');
+        s.append(el('span', '', 'PROJECT SLOT / ' + pad(PROJECTS.length + 1)), el('b', '', 'More to come'), el('span', '', 'NEXT BUILD IN DEVELOPMENT'));
+        list.appendChild(s);
+      }
+    }
+
+    function renderAll() { renderFilters(); renderMedia(false); renderDetail(); renderList(); }
+
+    /* keep the counters elsewhere on the page in sync with the list */
+    var released = PROJECTS.filter(function (p) { return p.status === 'RELEASED'; }).length;
+    kicker.textContent = 'SELECTED PROJECTS / ' + pad(PROJECTS.length);
+    var tb = document.querySelector('.home-telemetry b'); if (tb) tb.textContent = pad(released) + ' TITLE' + (released === 1 ? '' : 'S');
+    var rows = document.querySelectorAll('.profile-data .data-row b'); if (rows[2]) rows[2].textContent = pad(released) + ' game' + (released === 1 ? '' : 's') + ' / counting';
+
+    renderAll();
+
+    /* leaving the tab stops the video */
+    var _show = window.show;
+    window.show = function (id) { _show(id); if (id !== 'projects' && mediaBox.querySelector('iframe')) renderMedia(false); };
+  })();
+</script>
+<script>
+  (function () {
+    var mq = window.matchMedia('(max-width: 760px)'), stage = document.querySelector('.content-stage');
+    document.querySelectorAll('[role="tab"]').forEach(function (t) {
+      t.addEventListener('click', function () {
+        if (!mq.matches) return;
+        setTimeout(function () { stage.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 40);
+      });
+    });
+  })();
+</script>
 </body>
 
 </html>
