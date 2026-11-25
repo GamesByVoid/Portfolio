@@ -1375,6 +1375,11 @@
     .rail-footer { padding-top: 10px }
   }
 </style>
+<style>
+  /* hide scrollbars everywhere (scrolling still works) */
+  html, body, .content-stage { -ms-overflow-style: none; scrollbar-width: none }
+  html::-webkit-scrollbar, body::-webkit-scrollbar, .content-stage::-webkit-scrollbar { display: none; height: 0; width: 0 }
+</style>
 </head>
 
 <body class="booting">
