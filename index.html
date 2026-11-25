@@ -1358,6 +1358,23 @@
     .more-coming b { font-size: 15px }
   }
 </style>
+<style>
+  /* ===== Desktop: fixed left menu, only the right panel scrolls ===== */
+  @media (min-width: 761px) {
+    html, body { height: 100%; overflow: hidden !important }
+    .menu-world { height: 100svh; min-height: 0; overflow: hidden }
+    .menu-layout { grid-template-rows: minmax(0, 1fr); height: calc(100svh - 62px); min-height: 0; padding-bottom: clamp(64px, 9vh, 92px); padding-top: clamp(24px, 4.5vh, 64px) }
+    .menu-rail { min-height: 0; overflow: hidden }
+    .content-stage { align-items: flex-start; border-image: linear-gradient(90deg, transparent, rgba(216,49,45,.55), transparent) 1; border-top: 1px solid; min-height: 0; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; padding: 12px 0 }
+    .content-stage:before { display: none }
+    .view { margin-block: auto }
+  }
+  @media (min-width: 761px) and (max-height: 760px) {
+    .menu-title { margin-bottom: 22px }
+    .menu-list button { padding: 6px 0 }
+    .rail-footer { padding-top: 10px }
+  }
+</style>
 </head>
 
 <body class="booting">
@@ -1414,9 +1431,9 @@
           <h2>GAMEPLAY.<br><em>WORLD.</em><br>FEELING.</h2>
           <p class="view-text">I’m Rohit Kushwaha, a game developer from Delhi, India. I work in Unreal Engine 5, combining technical implementation with a focus on the player’s experience.</p>
           <div class="profile-data">
-            <div class="data-row"><span>FOCUS</span><b>Gameplay Programming & world building</b></div>
-            <div class="data-row"><span>LANGUAGES</span><b>C++ · Blueprints</b></div>
-            <div class="data-row"><span>TOOLS</span><b>Blender · Diversion · Git · GitHub · Gaea</b></div>
+            <div class="data-row"><span>FOCUS</span><b>Gameplay & world building</b></div>
+            <div class="data-row"><span>LANGUAGES</span><b>C++ · C# · Blueprints</b></div>
+            <div class="data-row"><span>TECH STACK</span><b>Blender · Diversion · Git · GitHub · Gaea</b></div>
             <div class="data-row"><span>RELEASED</span><b>01 game / counting</b></div>
           </div>
         </article>
@@ -1426,7 +1443,7 @@
           <p class="view-text">I design the systems that players touch: interaction, AI, puzzle logic, movement,
             feedback and the spaces that make these systems meaningful.</p>
           <div class="loadout"><span>UNREAL ENGINE
-              5</span><span>C++</span><span>BLUEPRINTS</span><span>AI
+              5</span><span>C++</span><span>C#</span><span>BLUEPRINTS</span><span>AI
               SYSTEMS</span><span>LEVEL DESIGN</span><span>NARRATIVE</span></div>
         </article>
         <article class="view" role="tabpanel" id="contact" aria-labelledby="tab-contact">
@@ -1907,6 +1924,17 @@
         setTimeout(function () { stage.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 40);
       });
     });
+  })();
+</script>
+<script>
+  /* desktop: reset the right panel to the top on tab change, and let the mouse wheel work from anywhere on the page */
+  (function () {
+    var mq = window.matchMedia('(min-width: 761px)'), st = document.querySelector('.content-stage'), _s = window.show;
+    window.show = function (id) { _s(id); st.scrollTop = 0; };
+    window.addEventListener('wheel', function (e) {
+      if (!mq.matches || e.ctrlKey || st.contains(e.target)) return;
+      st.scrollTop += e.deltaY;
+    }, { passive: true });
   })();
 </script>
 </body>
